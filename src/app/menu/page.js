@@ -19,13 +19,13 @@ export default function MenuPage(){
     return(
         <section className="mt-8">
             {categories.length>0 && categories.map(c=>(
-                <div>
+                <div  key={c._id}>
                  <div className="text-center">
                     <SectionHeaders mainHeader={c.name} />
                  </div>
                  <div className="grid grid-cols-3 gap-4 mt-6 mb-12">
-                  {menuItems.filter(item=>item.category === c._id).map(item=>(
-                    <MenuItem {...item}/>
+                  {menuItems.filter(item=>item.category === c._id).map((item)=>(
+                    <MenuItem key={item.id} {...item}/>
                   ))}
                  </div>
                 </div>

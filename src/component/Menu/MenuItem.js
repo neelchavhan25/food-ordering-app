@@ -61,7 +61,10 @@ export default function MenuItem(menuItem){
                         <h3 className="text-center text-gray-700 ">Pick your Size</h3>
                         {
                         sizes.map(size=>(
-                            <labal className="bg-slate-100 flex items-center gap-2 p-4 mb-1 border rounded-lg">
+                            <labal 
+                            key={size._id}
+                            className="bg-slate-100 flex items-center gap-2 p-4 mb-1 border rounded-lg"
+                            >
                                 <input type="radio" 
                                     onClick={()=>setSelectedSize(size)}
                                     checked={selectedSize?.name === size.name}
@@ -77,7 +80,9 @@ export default function MenuItem(menuItem){
                         <h3 className="text-center text-gray-700 ">Pick your Extra Ingredient</h3> 
                         {
                             extraIngredientPrices.map(extra=>(
-                            <labal className="bg-slate-100 flex items-center gap-2 p-4 mb-1 border rounded-lg">
+                            <labal
+                              key={extra._id} 
+                              className="bg-slate-100 flex items-center gap-2 p-4 mb-1 border rounded-lg">
                                 <input type="checkbox" 
                                 onClick={ev=> handleExtraThingClick(ev,extra)}
                                 name={extra.name}/> 

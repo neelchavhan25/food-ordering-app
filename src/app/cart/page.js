@@ -6,6 +6,7 @@ import Image from "next/image";
 import AddressInputs from "@/component/layout/AddressInputs";
 import { useContext, useEffect, useState } from "react";
 import { useProfile } from "@/component/UseProfile";
+import CartProduct from "../../component/Menu/CartProduct";
 
 export default function CartPage(){
     const {cartProducts,removeCartProduct}=useContext(CartContext);
@@ -43,40 +44,15 @@ export default function CartPage(){
                     {cartProducts?.length ===0  && (
                         <div>No products in your shopping cart</div>
                     )}
-                    {cartProducts?.length>0 && cartProducts.map((product,index)=>(
-                        <div className="flex gap-4 mb-2 border-b py-4 items-center"> 
-                         <div className="w-24">
-                            <Image src={"/pizza.png"} width={240} height={240}/>
-                         </div>
-                         <div className="grow"> 
-                            <h3 className="font-semibold"> {product.name}</h3>
-                        
-                         {product.size && (
-                            <div className="text-sm  ">
-                             Size: <span> {product.size.name}</span>
-                            </div>
-                         )}
-                         {product.extras && (
-                            <div className="text-sm text-gray-500"> 
-                                {product.extras.map(extra=>(
-                                    <div> {extra.name} ${extra.price}</div>
-                                ))}
-                            </div>
-                         )}
-                         </div>
-                         <div className="text-lg font-semibold">
-                           Rs.{cartProductPrice(product)}
-                         </div>
-                         <div className="ml-2">
-                            <button className="p-2"
-                               type="button"
-                                onClick={()=>removeCartProduct(index)}>
-                                <Trash />
-                            </button>
-                         </div>
-                        </div>
+                    {cartProducts?.length > 0 && cartProducts.map((product, index) => (
+                        <CartProduct
+                            key={index}
+                            product={product}
+                            onRemove={removeCartProduct}
+                        />
+
                     ))} 
-                    <div className="py-1 text-right pr-16">
+                    <div className="py-2 text-right pr-16">
                         <span className="text-gray-500">Total: &nbsp;</span>
                         <span className="text-lg font-semibold">Rs.{total}</span>
                     </div>

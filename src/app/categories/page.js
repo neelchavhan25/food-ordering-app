@@ -105,8 +105,8 @@ export default function CategoriesPage(){
             </form>
             <div>
                 <h2 className="mt-8 text-sm text-gray-500">Existing Category</h2>
-                {categories?.length>0 && categories.map(c=>(
-                    <div 
+                {categories?.length>0 && categories.map((c,index)=>(
+                    <div key={index}
                       className="bg-gray-100 flex rounded-xl p-2 px-4 mb-2 gap-1 items-center"> 
                         <div
                         className="grow " >
